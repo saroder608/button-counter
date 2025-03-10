@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Button Counter</title>
     <style>
         body {
@@ -28,6 +28,8 @@
             cursor: pointer;
             border-radius: 8px;
             border: none;
+            /* Prevent double-tap zoom on iOS */
+            touch-action: manipulation;
         }
         .plus {
             background-color: green;
@@ -63,6 +65,9 @@
     <div class="counter-display">
         Result (Plus - Minus): <span id="result-count">0</span>
     </div>
+    <div class="counter-display">
+        Total Count (Plus + Minus): <span id="total-count">0</span>
+    </div>
 
     <script>
         let plusCount = 0;
@@ -88,6 +93,7 @@
             document.getElementById('plus-count').textContent = plusCount;
             document.getElementById('minus-count').textContent = minusCount;
             document.getElementById('result-count').textContent = plusCount - minusCount;
+            document.getElementById('total-count').textContent = plusCount + minusCount;
         }
     </script>
 </body>
