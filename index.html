@@ -7,68 +7,88 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .button-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
         }
         button {
-            padding: 10px 20px;
-            font-size: 16px;
-            margin: 10px;
+            font-size: 24px;
+            padding: 15px 30px;
             cursor: pointer;
+            border-radius: 8px;
+            border: none;
         }
-        .green {
+        .plus {
             background-color: green;
             color: white;
         }
-        .red {
+        .minus {
             background-color: red;
             color: white;
         }
-        .numbers {
+        .reset {
+            background-color: orange;
+            color: white;
+        }
+        .counter-display {
             font-size: 24px;
-            margin: 20px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-
     <h1>Button Counter</h1>
-
-    <!-- Buttons -->
-    <button class="green" onclick="incrementGreen()">+ Green</button>
-    <button class="red" onclick="incrementRed()">- Red</button>
-
-    <!-- Display for counts -->
-    <div class="numbers">
-        <p>Green Button Count: <span id="greenCount">0</span></p>
-        <p>Red Button Count: <span id="redCount">0</span></p>
-        <p>Difference (Green - Red): <span id="difference">0</span></p>
+    <div class="button-container">
+        <button class="plus" onclick="incrementPlus()">Plus</button>
+        <button class="minus" onclick="incrementMinus()">Minus</button>
+        <button class="reset" onclick="resetCounts()">Reset</button>
+    </div>
+    <div class="counter-display">
+        Plus Count: <span id="plus-count">0</span>
+    </div>
+    <div class="counter-display">
+        Minus Count: <span id="minus-count">0</span>
+    </div>
+    <div class="counter-display">
+        Result (Plus - Minus): <span id="result-count">0</span>
     </div>
 
     <script>
-        // Initial counts
-        let greenCount = 0;
-        let redCount = 0;
+        let plusCount = 0;
+        let minusCount = 0;
 
-        // Increment Green Button count
-        function incrementGreen() {
-            greenCount++;
-            updateDisplay();
+        function incrementPlus() {
+            plusCount++;
+            updateCounts();
         }
 
-        // Increment Red Button count
-        function incrementRed() {
-            redCount++;
-            updateDisplay();
+        function incrementMinus() {
+            minusCount++;
+            updateCounts();
         }
 
-        // Update the displayed counts
-        function updateDisplay() {
-            document.getElementById("greenCount").innerText = greenCount;
-            document.getElementById("redCount").innerText = redCount;
-            document.getElementById("difference").innerText = greenCount - redCount;
+        function resetCounts() {
+            plusCount = 0;
+            minusCount = 0;
+            updateCounts();
+        }
+
+        function updateCounts() {
+            document.getElementById('plus-count').textContent = plusCount;
+            document.getElementById('minus-count').textContent = minusCount;
+            document.getElementById('result-count').textContent = plusCount - minusCount;
         }
     </script>
-
 </body>
 </html>
