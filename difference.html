@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Counter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .green {
+            background-color: green;
+            color: white;
+        }
+        .red {
+            background-color: red;
+            color: white;
+        }
+        .numbers {
+            font-size: 24px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Button Counter</h1>
+
+    <!-- Buttons -->
+    <button class="green" onclick="incrementGreen()">+ Green</button>
+    <button class="red" onclick="incrementRed()">- Red</button>
+
+    <!-- Display for counts -->
+    <div class="numbers">
+        <p>Green Button Count: <span id="greenCount">0</span></p>
+        <p>Red Button Count: <span id="redCount">0</span></p>
+        <p>Difference (Green - Red): <span id="difference">0</span></p>
+    </div>
+
+    <script>
+        // Initial counts
+        let greenCount = 0;
+        let redCount = 0;
+
+        // Increment Green Button count
+        function incrementGreen() {
+            greenCount++;
+            updateDisplay();
+        }
+
+        // Increment Red Button count
+        function incrementRed() {
+            redCount++;
+            updateDisplay();
+        }
+
+        // Update the displayed counts
+        function updateDisplay() {
+            document.getElementById("greenCount").innerText = greenCount;
+            document.getElementById("redCount").innerText = redCount;
+            document.getElementById("difference").innerText = greenCount - redCount;
+        }
+    </script>
+
+</body>
+</html>
